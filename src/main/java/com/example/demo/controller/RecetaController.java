@@ -18,7 +18,7 @@ import java.util.Map;
 @CrossOrigin(origins = "*")
 public class RecetaController {
     
-    private final RecetaService recetaService;
+    private final RecetaService recetaService = new RecetaService();
     
     /**
      * GET /api/recetas

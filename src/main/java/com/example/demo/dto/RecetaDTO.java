@@ -41,82 +41,102 @@ public class RecetaDTO {
     // Para crear recetas completas con ingredientes y pasos
     private List<RecetaIngredienteDTO> ingredientes;
     private List<PasoPreparacionDTO> pasos;
-    
-	public String getNombreReceta() {
-		// TODO Auto-generated method stub
-		return this.nombreReceta;
-	}
 
-	public Object getIdCategoria() {
-		// TODO Auto-generated method stub
-		return this.idCategoria;
-	}
+    public Integer getIdReceta() {
+        return idReceta;
+    }
 
-	public Object getIdModulo() {
-		// TODO Auto-generated method stub
-		return this.idModulo;
-	}
+    public void setIdReceta(Integer idReceta) {
+        this.idReceta = idReceta;
+    }
 
-	public Object getTiempoPreparacion() {
-		// TODO Auto-generated method stub
-		return this.tiempoPreparacion;
-	}
+    public Integer getIdCategoria() {
+        return idCategoria;
+    }
 
-	public Object getPorciones() {
-		// TODO Auto-generated method stub
-		return this.porciones;
-	}
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
+    }
 
-	public Object getTemperatura() {
-		// TODO Auto-generated method stub
-		return this.temperatura;
-	}
+    public Integer getIdModulo() {
+        return idModulo;
+    }
 
-	public Object getNotasAdicionales() {
-		// TODO Auto-generated method stub
-		return this.notasAdicionales;
-	}
+    public void setIdModulo(Integer idModulo) {
+        this.idModulo = idModulo;
+    }
 
-	public void setIdReceta(Object idReceta2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public String getNombreReceta() {
+        return nombreReceta;
+    }
 
-	public void setIdCategoria(Object idCategoria2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setNombreReceta(String nombreReceta) {
+        this.nombreReceta = nombreReceta;
+    }
 
-	public void setIdModulo(Object idModulo2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Integer getTiempoPreparacion() {
+        return tiempoPreparacion;
+    }
 
-	public void setNombreReceta(Object nombreReceta2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setTiempoPreparacion(Integer tiempoPreparacion) {
+        this.tiempoPreparacion = tiempoPreparacion;
+    }
 
-	public void setPorciones(Object porciones2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Integer getPorciones() {
+        return porciones;
+    }
 
-	public void setTiempoPreparacion(Object tiempoPreparacion2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setPorciones(Integer porciones) {
+        this.porciones = porciones;
+    }
 
-	public void setTemperatura(Object temperatura2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public String getTemperatura() {
+        return temperatura;
+    }
 
-	public void setNotasAdicionales(Object notasAdicionales2) {
-		// TODO Auto-generated method stub
-		
-	}
-	
+    public void setTemperatura(String temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public String getNotasAdicionales() {
+        return notasAdicionales;
+    }
+
+    public void setNotasAdicionales(String notasAdicionales) {
+        this.notasAdicionales = notasAdicionales;
+    }
+
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
+
+    public String getNombreModulo() {
+        return nombreModulo;
+    }
+
+    public void setNombreModulo(String nombreModulo) {
+        this.nombreModulo = nombreModulo;
+    }
+
+    public List<RecetaIngredienteDTO> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(List<RecetaIngredienteDTO> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+
+    public List<PasoPreparacionDTO> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(List<PasoPreparacionDTO> pasos) {
+        this.pasos = pasos;
+    }
 }
 
 @Data

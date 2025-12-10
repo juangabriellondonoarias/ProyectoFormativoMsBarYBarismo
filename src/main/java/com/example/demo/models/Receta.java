@@ -54,81 +54,102 @@ public class Receta {
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PasoPreparacion> pasos;
 
-	public Object getNombreReceta() {
-		// TODO Auto-generated method stub
-		return this.nombreReceta;
-	}
+    public Integer getIdReceta() {
+        return idReceta;
+    }
 
-	public void setIdCategoria(Object idCategoria2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setIdReceta(Integer idReceta) {
+        this.idReceta = idReceta;
+    }
 
-	public void setIdModulo(Object idModulo2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Integer getIdCategoria() {
+        return idCategoria;
+    }
 
-	public void setNombreReceta(String nombreReceta2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
+    }
 
-	public void setTiempoPreparacion(Object tiempoPreparacion2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Integer getIdModulo() {
+        return idModulo;
+    }
 
-	public void setPorciones(Object porciones2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setIdModulo(Integer idModulo) {
+        this.idModulo = idModulo;
+    }
 
-	public void setTemperatura(Object temperatura2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public String getNombreReceta() {
+        return nombreReceta;
+    }
 
-	public void setNotasAdicionales(Object notasAdicionales2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setNombreReceta(String nombreReceta) {
+        this.nombreReceta = nombreReceta;
+    }
 
-	public Object getIdReceta() {
-		// TODO Auto-generated method stub
-		return this.idReceta;
-	}
+    public Integer getTiempoPreparacion() {
+        return tiempoPreparacion;
+    }
 
-	public Object getIdCategoria() {
-		// TODO Auto-generated method stub
-		return this.idCategoria;
-	}
+    public void setTiempoPreparacion(Integer tiempoPreparacion) {
+        this.tiempoPreparacion = tiempoPreparacion;
+    }
 
-	public Object getTiempoPreparacion() {
-		// TODO Auto-generated method stub
-		return this.tiempoPreparacion;
-	}
+    public Integer getPorciones() {
+        return porciones;
+    }
 
-	public Object getIdModulo() {
-		// TODO Auto-generated method stub
-		return this.idModulo;
-	}
+    public void setPorciones(Integer porciones) {
+        this.porciones = porciones;
+    }
 
-	public Object getPorciones() {
-		// TODO Auto-generated method stub
-		return this.porciones;
-	}
+    public String getTemperatura() {
+        return temperatura;
+    }
 
-	public Object getTemperatura() {
-		// TODO Auto-generated method stub
-		return this.temperatura;
-	}
+    public void setTemperatura(String temperatura) {
+        this.temperatura = temperatura;
+    }
 
-	public Object getNotasAdicionales() {
-		// TODO Auto-generated method stub
-		return this.notasAdicionales;
-	}
+    public String getNotasAdicionales() {
+        return notasAdicionales;
+    }
 
+    public void setNotasAdicionales(String notasAdicionales) {
+        this.notasAdicionales = notasAdicionales;
+    }
+
+    public CategoriaReceta getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaReceta categoria) {
+        this.categoria = categoria;
+    }
+
+    public Modulo getModulo() {
+        return modulo;
+    }
+
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
+    }
+
+    public List<RecetaIngrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(List<RecetaIngrediente> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+
+    public List<PasoPreparacion> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(List<PasoPreparacion> pasos) {
+        this.pasos = pasos;
+    }
 
 	
+
 }
