@@ -43,7 +43,6 @@ public interface RecetaRepository extends JpaRepository<Receta, Integer> {
     
     // Listar todas las recetas con información básica de categoría y módulo
     @Query("SELECT r FROM Receta r " +
-           "JOIN FETCH r.categoria " +
-           "JOIN FETCH r.modulo")
+           "JOIN FETCH r.categoria")
     List<Receta> findAllWithCategoryAndModule();
 }

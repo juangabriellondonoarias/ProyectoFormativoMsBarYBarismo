@@ -19,6 +19,10 @@ public class Ingrediente {
     @Column(name = "unidad_medida_stock", length = 20)
     private String unidadMedidaStock;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_receta")
+    private Receta receta;
+    
     public Integer getIdIngrediente() {
         return idIngrediente;
     }

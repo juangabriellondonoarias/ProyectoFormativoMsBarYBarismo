@@ -44,12 +44,8 @@ public class Receta {
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private CategoriaReceta categoria;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_modulo", insertable = false, updatable = false)
-    private Modulo modulo;
-    
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RecetaIngrediente> ingredientes;
+    private List<Ingrediente> ingredientes;
     
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PasoPreparacion> pasos;
@@ -126,19 +122,11 @@ public class Receta {
         this.categoria = categoria;
     }
 
-    public Modulo getModulo() {
-        return modulo;
-    }
-
-    public void setModulo(Modulo modulo) {
-        this.modulo = modulo;
-    }
-
-    public List<RecetaIngrediente> getIngredientes() {
+    public List<Ingrediente> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(List<RecetaIngrediente> ingredientes) {
+    public void setIngredientes(List<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
     }
 

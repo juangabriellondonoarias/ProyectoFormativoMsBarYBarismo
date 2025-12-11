@@ -6,6 +6,8 @@ import com.example.demo.exception.DuplicateResourceException;
 import com.example.demo.models.Receta;
 import com.example.demo.repository.RecetaRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +19,11 @@ import java.util.stream.Collectors;
 public class RecetaService {
     
     private final RecetaRepository recetaRepository;
+    
+    @Autowired
+    public RecetaService(RecetaRepository recetaRepository) {
+        this.recetaRepository = recetaRepository; // OBLIGATORIO
+    }
     
     /**
      * Obtener todas las recetas
@@ -166,10 +173,6 @@ public class RecetaService {
         if (receta.getCategoria() != null) {
             dto.setNombreCategoria(receta.getCategoria().getNombreCategoria());
         }
-        if (receta.getModulo() != null) {
-            dto.setNombreModulo(receta.getModulo().getNombre());
-        }
-        
         return dto;
     }
     
