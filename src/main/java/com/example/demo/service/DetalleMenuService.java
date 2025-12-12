@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.DetalleMenu;
+import com.example.demo.models.DetalleMenu;
 import com.example.demo.repository.DetalleMenuRepository;
 import org.springframework.stereotype.Service;
 

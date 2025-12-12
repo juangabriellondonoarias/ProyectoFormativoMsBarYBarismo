@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.DetalleMenu;
+import com.example.demo.models.DetalleMenu;
 import com.example.demo.service.DetalleMenuService;
 import org.springframework.web.bind.annotation.*;
 
