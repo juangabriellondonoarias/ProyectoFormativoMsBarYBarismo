@@ -154,17 +154,3 @@ class RecetaIngredienteDTO {
     @Size(max = 50)
     private String unidadMedida;
 }
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-class PasoPreparacionDTO {
-    private Integer idPaso;
-    
-    @NotNull(message = "El orden es obligatorio")
-    @Min(value = 1, message = "El orden debe ser mayor a 0")
-    private Integer orden;
-    
-    @NotBlank(message = "La descripción del paso es obligatoria")
-    private String descripcionPaso;
-}

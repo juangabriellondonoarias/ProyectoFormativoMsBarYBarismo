@@ -4,10 +4,12 @@ import com.example.demo.dto.PasoPreparacionDTO;
 import com.example.demo.service.PasoPreparacionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,14 +18,17 @@ import java.util.Map;
 @RequestMapping("/api/pasos-preparacion")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
+@Service
 public class PasoPreparacionController {
-    
-    private final PasoPreparacionService pasoService;
+	
+    @Autowired
+    private PasoPreparacionService pasoService;
     
     /**
      * GET /api/pasos-preparacion
      * Obtener todos los pasos de preparación
      */
+    
     @GetMapping
     public ResponseEntity<Map<String, Object>> obtenerTodos() {
         List<PasoPreparacionDTO> pasos = pasoService.obtenerTodos();

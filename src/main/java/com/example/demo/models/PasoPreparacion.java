@@ -30,6 +30,7 @@ public class PasoPreparacion {
     @Column(name = "descripcion_paso", nullable = false, columnDefinition = "TEXT")
     private String descripcionPaso;
     
+    
     // Relación con Receta
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_receta", insertable = false, updatable = false)

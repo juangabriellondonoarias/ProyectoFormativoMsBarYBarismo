@@ -77,7 +77,7 @@ public class PasoPreparacionDTO {
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor 
 class PasoPreparacionSimpleDTO {
     
     @NotNull(message = "El orden es obligatorio")

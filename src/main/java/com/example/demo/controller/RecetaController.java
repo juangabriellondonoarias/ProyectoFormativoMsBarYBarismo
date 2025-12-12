@@ -4,8 +4,11 @@ import com.example.demo.dto.RecetaDTO;
 import com.example.demo.service.RecetaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,9 +19,10 @@ import java.util.Map;
 @RequestMapping("/api/recetas")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
+@Service
 public class RecetaController {
-    
-    private final RecetaService recetaService = new RecetaService();
+    @Autowired
+    private RecetaService recetaService;
     
     /**
      * GET /api/recetas
