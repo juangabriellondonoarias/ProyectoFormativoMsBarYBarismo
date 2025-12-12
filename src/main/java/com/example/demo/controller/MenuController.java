@@ -16,13 +16,33 @@ public class MenuController {
         this.service = service;
     }
 
+    // Crear
     @PostMapping
     public Menu create(@RequestBody Menu menu) {
         return service.save(menu);
     }
 
+    // Obtener todos
     @GetMapping
     public List<Menu> getAll() {
         return service.findAll();
+    }
+
+    // Obtener por ID
+    @GetMapping("/{id}")
+    public Menu getById(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
+    // Actualizar
+    @PutMapping("/{id}")
+    public Menu update(@PathVariable Long id, @RequestBody Menu menu) {
+        return service.update(id, menu);
+    }
+
+    // Eliminar
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
 }
