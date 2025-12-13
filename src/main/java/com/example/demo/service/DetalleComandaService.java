@@ -19,6 +19,16 @@ public class DetalleComandaService {
     private final DetalleComandaRepository repository;
     private final ComandaRepository comandaRepository;
     private final DetalleComandaMapper mapper;
+    
+    public DetalleComandaService(
+            DetalleComandaRepository repository,
+            ComandaRepository comandaRepository,
+            DetalleComandaMapper mapper
+    ) {
+        this.repository = repository;
+        this.comandaRepository = comandaRepository;
+        this.mapper = mapper;
+    }
 
     public DetalleComandaDTO crear(Integer idPedido, DetalleComandaDTO dto) {
 
@@ -26,7 +36,7 @@ public class DetalleComandaService {
                 .orElseThrow(() -> new ResourceNotFoundException("Pedido no encontrado"));
 
         DetalleComanda entity = mapper.toEntity(dto);
-        entity.setPedidoCocina(comanda);
+        entity.setComanda(comanda);
 
         return mapper.toDTO(repository.save(entity));
     }
