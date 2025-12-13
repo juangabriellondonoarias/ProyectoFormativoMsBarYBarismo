@@ -17,7 +17,7 @@ public class DetalleMenu {
     @JoinColumn(name = "id_menu", nullable = false)
     private Menu menu;
 
-    // Temporal: relación hacia receta como ID (tu compañero lo reemplaza)
+    // Temporal: relación hacia receta como ID
     @Column(name = "id_receta")
     private Long idReceta;
 
