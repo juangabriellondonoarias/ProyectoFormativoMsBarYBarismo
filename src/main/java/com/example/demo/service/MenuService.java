@@ -17,6 +17,7 @@ public class MenuService {
 
     // Crear
     public Menu save(Menu menu) {
+        menu.setActivo(true); // 🔥 regla de negocio clara
         return repository.save(menu);
     }
 
@@ -28,23 +29,28 @@ public class MenuService {
     // Obtener por id
     public Menu findById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Menu no encontrado con id: " + id));
+                .orElseThrow(() ->
+                        new RuntimeException("Menú no encontrado con id: " + id)
+                );
     }
 
     // Actualizar
-    public Menu update(Long id, Menu menuActualizado) {
+    public Menu update(Long id, Menu datos) {
         Menu existente = findById(id);
 
-        existente.setNombre(menuActualizado.getNombre());
-        existente.setDescripcion(menuActualizado.getDescripcion());
-        existente.setPrecio(menuActualizado.getPrecio());
-        existente.setActivo(menuActualizado.getActivo());
+        existente.setNombre(datos.getNombre());
+        existente.setDescripcion(datos.getDescripcion());
+        existente.setPrecio(datos.getPrecio());
+        existente.setCategoria(datos.getCategoria());
+        // ⛔ NO tocar activo aquí, a menos que tengas un endpoint específico
 
         return repository.save(existente);
     }
 
-    // Eliminar
+    // Eliminación lógica (RECOMENDADO)
     public void delete(Long id) {
-        repository.deleteById(id);
+        Menu menu = findById(id);
+        menu.setActivo(false);
+        repository.save(menu);
     }
 }

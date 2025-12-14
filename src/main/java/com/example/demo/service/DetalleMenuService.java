@@ -28,13 +28,15 @@ public class DetalleMenuService {
     // Obtener por id
     public DetalleMenu findById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("DetalleMenu no encontrado con id " + id));
+                .orElseThrow(() ->
+                        new RuntimeException("DetalleMenu no encontrado con id " + id));
     }
 
     // Actualizar
     public DetalleMenu update(Long id, DetalleMenu detalleActualizado) {
         DetalleMenu existente = findById(id);
 
+        // Se actualizan SOLO los campos que tiene tu entity
         existente.setImagen(detalleActualizado.getImagen());
         existente.setMenu(detalleActualizado.getMenu());
         existente.setIdReceta(detalleActualizado.getIdReceta());
@@ -47,9 +49,8 @@ public class DetalleMenuService {
         repository.deleteById(id);
     }
 
-    // Buscar por idMenu
+    // Buscar por ID del menú (menu.id)
     public List<DetalleMenu> findByMenuId(Long menuId) {
         return repository.findByMenuId(menuId);
     }
 }
-
