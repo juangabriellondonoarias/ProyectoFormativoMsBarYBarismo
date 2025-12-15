@@ -2,36 +2,39 @@ package com.example.demo.mappers;
 
 import com.example.demo.dto.PasoPreparacionDTO;
 import com.example.demo.models.PasoPreparacion;
-import org.springframework.stereotype.Component;
+import com.example.demo.models.Receta;
 
-@Component
 public class PasoPreparacionMapper {
+	public static PasoPreparacionDTO toDTO(PasoPreparacion paso) {
+        if (paso == null) return null;
 
-    // ===== ENTITY -> DTO =====
-    public PasoPreparacionDTO toDTO(PasoPreparacion entity) {
         PasoPreparacionDTO dto = new PasoPreparacionDTO();
-
-        dto.setidPaso(entity.getIdPaso());
-        dto.setIdReceta(entity.getIdReceta());
-        dto.setOrden(entity.getOrden());
-        dto.setDescripcionPaso(entity.getDescripcionPaso());
-
-        if (entity.getReceta() != null) {
-            dto.setnombreReceta(entity.getReceta().getNombreReceta());
+        dto.setIdPaso(paso.getIdPaso());
+        dto.setOrden(paso.getOrden());
+        dto.setDescripcionPaso(paso.getDescripcionPaso());
+        
+        // Extraemos el ID de la receta padre si existe
+        if (paso.getReceta() != null) {
+            dto.setIdReceta(paso.getReceta().getIdReceta());
         }
 
         return dto;
     }
 
-    // ===== DTO -> ENTITY =====
-    public PasoPreparacion toEntity(PasoPreparacionDTO dto) {
-        PasoPreparacion entity = new PasoPreparacion();
+    public static PasoPreparacion toEntity(PasoPreparacionDTO dto) {
+        if (dto == null) return null;
 
-        entity.setIdPaso(dto.getidPaso());
-        entity.setIdReceta(dto.getIdReceta());
-        entity.setOrden(dto.getOrden());
-        entity.setDescripcionPaso(dto.getDescripcionPaso());
+        PasoPreparacion paso = new PasoPreparacion();
+        paso.setOrden(dto.getOrden());
+        paso.setDescripcionPaso(dto.getDescripcionPaso());
 
-        return entity;
+        // Vinculamos con la Receta usando solo el ID
+        if (dto.getIdReceta() != null) {
+            Receta recetaDummy = new Receta();
+            recetaDummy.setIdReceta(dto.getIdReceta());
+            paso.setReceta(recetaDummy);
+        }
+
+        return paso;
     }
 }

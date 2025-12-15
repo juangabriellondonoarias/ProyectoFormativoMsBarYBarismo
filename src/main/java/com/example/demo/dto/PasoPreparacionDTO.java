@@ -1,39 +1,17 @@
 package com.example.demo.dto;
 
-import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-/**
- * DTO para transferencia de datos de Paso de Preparación
- */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PasoPreparacionDTO {
-    
-    private Integer idPaso;
-    
-    @NotNull(message = "El ID de la receta es obligatorio")
-    private Integer idReceta;
-    
-    @NotNull(message = "El orden del paso es obligatorio")
-    @Min(value = 1, message = "El orden debe ser mayor a 0")
+	private Integer idPaso;
+    private Integer idReceta; // Fundamental para saber a quién pertenece
     private Integer orden;
-    
-    @NotBlank(message = "La descripción del paso es obligatoria")
-    @Size(min = 10, message = "La descripción debe tener al menos 10 caracteres")
     private String descripcionPaso;
     
-    // Información adicional para respuestas
-    private String nombreReceta;
-    
-    public Integer getidPaso() {
+
+    public Integer getIdPaso() {
         return idPaso;
     }
 
-    public void setidPaso(Integer idPaso) {
+    public void setIdPaso(Integer idPaso) {
         this.idPaso = idPaso;
     }
 
@@ -60,30 +38,4 @@ public class PasoPreparacionDTO {
     public void setDescripcionPaso(String descripcionPaso) {
         this.descripcionPaso = descripcionPaso;
     }
-
-    public String getnombreReceta() {
-        return nombreReceta;
-    }
-
-    public void setnombreReceta(String nombreReceta) {
-        this.nombreReceta = nombreReceta;
-    }
-
-}
-
-/**
- * DTO simplificado para crear/actualizar múltiples pasos
- * Se usa cuando se crean todos los pasos de una receta a la vez
- */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor 
-class PasoPreparacionSimpleDTO {
-    
-    @NotNull(message = "El orden es obligatorio")
-    @Min(value = 1, message = "El orden debe ser mayor a 0")
-    private Integer orden;
-    
-    @NotBlank(message = "La descripción es obligatoria")
-    private String descripcionPaso;
 }
