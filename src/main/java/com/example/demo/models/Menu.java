@@ -7,6 +7,18 @@ import java.math.BigDecimal;
 @Table(name = "menu")
 public class Menu {
 
+	@Column(nullable = false)
+	private String categoria;
+	
+	public String getCategoria() {
+	    return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+	    this.categoria = categoria;
+	}
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

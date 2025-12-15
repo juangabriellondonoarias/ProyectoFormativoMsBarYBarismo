@@ -120,3 +120,4 @@ public class RecetaServiceImpl implements RecetaService {
         }
         repositorio.deleteById(id);
     }
+}

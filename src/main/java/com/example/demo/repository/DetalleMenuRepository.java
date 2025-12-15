@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface DetalleMenuRepository extends JpaRepository<DetalleMenu, Long> {
 
-    // Buscar detalles por el ID del menú
     List<DetalleMenu> findByMenuId(Long menuId);
 }

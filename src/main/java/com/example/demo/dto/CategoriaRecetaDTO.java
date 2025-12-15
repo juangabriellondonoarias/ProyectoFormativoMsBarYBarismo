@@ -1,28 +1,26 @@
 package com.example.demo.dto;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoriaRecetaDTO {
 	private Integer idCategoria;
+	private String nombreCategoria;
+	
+	  public Integer getIdCategoria() {
+	        return idCategoria;
+	    }
 
-    @NotBlank(message = "El nombre de la categoría es obligatorio")
-    @Size(max = 100, message = "El nombre no puede exceder 100 caracteres")
-    private String nombreCategoria;
+	    public void setIdCategoria(Integer idCategoria) {
+	        this.idCategoria = idCategoria;
+	    }
 
-    
-    public Integer getIdCategoria() {
-        return idCategoria;
-    }
+	    public String getNombreCategoria() {
+	        return nombreCategoria;
+	    }
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public String getNombreCategoria() {
-        return nombreCategoria;
-    }
-
-    public void setNombreCategoria(String nombreCategoria) {
-        this.nombreCategoria = nombreCategoria;
-    }
+	    public void setNombreCategoria(String nombreCategoria) {
+	        this.nombreCategoria = nombreCategoria;
+	    }
 }
