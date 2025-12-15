@@ -1,101 +1,110 @@
 package com.example.demo.models;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import java.time.LocalDateTime;   
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Data
-@Table(name = "COMANDA")
+@Table(name = "COMANDA_COCINA")
 public class Comanda {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_comanda")
-    private Integer idComanda;
-
-    @Column(name = "id_pedido_restaurante", nullable = false)
-    private Integer idPedidoRestaurante;
-
-    @Column(name = "id_mesa", nullable = false)
-    private Integer idMesa;
-
-    @Column(name = "hora_entrada", nullable = false)
-    private LocalDateTime horaEntrada = LocalDateTime.now();
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_comanda_bar_y_barismo")
+	private Integer idComanda;
+	
+	@Column(name = "id_comanda_restaurante", nullable = false)
+	private Integer idComandaRestaurante;
+	
+	@Column(name = "id_mesa" , nullable = false)
+	private Integer idMesa;
+	
+	/* mapeo del datetime */
+	@CreationTimestamp
+	@Column(name = "hora_entrada" , nullable = false , updatable = false)
+	private LocalDateTime horaEntrada;
+	
+	/* Mapeo del ENUM ESTADO */
     @Enumerated(EnumType.STRING)
-    private EstadoPedido estado = EstadoPedido.EN_ESPERA;
-
-    @Enumerated(EnumType.STRING)
-    private Prioridad prioridad = Prioridad.MEDIA;
-
-    @OneToMany(mappedBy = "pedidoBarYBarismo", cascade = CascadeType.ALL)
-    private List<DetalleComanda> detalles;
-
-    public enum EstadoPedido {
-        EN_ESPERA, EN_PREPARACION, LISTO, ENTREGADO
-    }
-
-    public enum Prioridad {
-        BAJA, MEDIA, ALTA
-    }
+    @Column(name = "estado", nullable = false)
+    private EstadoComanda estado = EstadoComanda.EN_ESPERA; 
+	
+    /* Mapeo del enum prioridad */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "prioridad" , nullable = false) 
+	private PrioridadComanda prioridad = PrioridadComanda.MEDIA;
     
-    public Integer getIdComanda() {
-        return idComanda;
-    }
+    /* Campo para notas/comentarios */
+    @Column(name = "notas", length = 500) // Se aumentó la longitud para notas
+    private String notas;
 
-    public void setIdComanda(Integer idComanda) {
-        this.idComanda = idComanda;
+	/* constructor */
+	public Comanda() {
+	}
+	
+	/* get y set */
+	
+	public Integer getIdComanda() {
+		return idComanda;
+	}
+	
+	public Integer getIdComandaRestaurante() {
+		return idComandaRestaurante;
+	}
+	
+	public Integer getIdMesa () { 
+		return idMesa;
+	}
+	
+	public LocalDateTime getHoraEntrada () {
+		return horaEntrada;
+	}
+	
+	public EstadoComanda getEstado () {
+		return estado;
+	}
+	
+	public PrioridadComanda getPrioridad () {
+		return prioridad;
+	}
+    
+    public String getNotas() {
+        return notas;
     }
+	
+	public void setIdComanda (Integer idComanda) {
+		this.idComanda = idComanda;
+	}
+	
+	public void setIdComandaRestaurante(Integer idComandaRestaurante) { // Corregido: se asume que este era el setter correcto
+		this.idComandaRestaurante = idComandaRestaurante;
+	}
+	
+	public void setIdMesa(Integer idMesa) {
+		this.idMesa = idMesa;
+	}
+	
+	public void setHoraEntrada(LocalDateTime horaEntrada ) {
+		this.horaEntrada = horaEntrada;
+	}
+	
+	public void setEstado( EstadoComanda estado) {
+		this.estado = estado;
+	}
+	
+	public void setPrioridad(PrioridadComanda prioridad) {
+		this.prioridad = prioridad;
+	}
 
-    public Integer getIdPedidoRestaurante() {
-        return idPedidoRestaurante;
+    public void setNotas(String notas) { // Importante: setter de notas
+        this.notas = notas;
     }
-
-    public void setIdPedidoRestaurante(Integer idPedidoRestaurante) {
-        this.idPedidoRestaurante = idPedidoRestaurante;
-    }
-
-    public Integer getIdMesa() {
-        return idMesa;
-    }
-
-    public void setIdMesa(Integer idMesa) {
-        this.idMesa = idMesa;
-    }
-
-    public LocalDateTime getHoraEntrada() {
-        return horaEntrada;
-    }
-
-    public void setHoraEntrada(LocalDateTime horaEntrada) {
-        this.horaEntrada = horaEntrada;
-    }
-
-    public EstadoPedido getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoPedido estado) {
-        this.estado = estado;
-    }
-
-    public Prioridad getPrioridad() {
-        return prioridad;
-    }
-
-    public void setPrioridad(Prioridad prioridad) {
-        this.prioridad = prioridad;
-    }
-
-    public List<DetalleComanda> getDetalles() {
-        return detalles;
-    }
-
-    public void setDetalles(List<DetalleComanda> detalles) {
-        this.detalles = detalles;
-    }
-
 }

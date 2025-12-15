@@ -1,86 +1,83 @@
 package com.example.demo.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "DETALLE_COMANDA")
+@Table(name = "DETALLE_COMANDA_BAR_Y_BARISMO")
 public class DetalleComanda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_detalle_comanda")
+    @Column(name = "id_detalle_comanda_bar_y_barismo")
     private Integer idDetalleComanda;
 
-    @ManyToOne
-    @JoinColumn(name = "id_comanda", nullable = false)
+    /* Relación con la Comanda */
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_comanda_bar_y_barismo", nullable = false)
     private Comanda comanda;
+    
+    /* Relación con el Menú */
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_menu", nullable = false)
+    private Menu menu;
 
-    @Column(name = "id_receta", nullable = false)
-    private Integer idReceta;
-
-    @Column(nullable = false)
+    @Column(name = "cantidad", nullable = false)
     private Integer cantidad;
 
-    @Column(length = 200)
-    private String notas;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "estado_bebida")
-    private EstadoBebida estadoBebida = EstadoBebida.EN_ESPERA;
-
-    public enum EstadoBebida {
-        EN_ESPERA, PREPARANDO, LISTO
+    @Column(name = "notas", length = 200) // Nota: Si las notas son por plato, se mantiene aquí. Si son generales, deben ir solo en ComandaCocina.
+    private String notas; 
+    
+    /* Constructor */
+    public DetalleComanda() {
     }
 
-    // ===== GETTERS =====
+    /* Getters y Setters */
 
     public Integer getIdDetalleComanda() {
         return idDetalleComanda;
+    }
+
+    public void setIdDetalleComanda(Integer idDetalleComanda) {
+        this.idDetalleComanda = idDetalleComanda;
     }
 
     public Comanda getComanda() {
         return comanda;
     }
 
-    public Integer getIdReceta() {
-        return idReceta;
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public Integer getCantidad() {
         return cantidad;
     }
 
-    public String getNotas() {
-        return notas;
-    }
-
-    public EstadoBebida getEstadoBebida() {
-        return estadoBebida;
-    }
-
-    // ===== SETTERS =====
-
-    public void setIdDetalleComanda(Integer idDetalleComanda) {
-        this.idDetalleComanda = idDetalleComanda;
-    }
-
-    public void setComanda(Comanda comanda) {
-        this.comanda = comanda;
-    }
-
-    public void setIdReceta(Integer idReceta) {
-        this.idReceta = idReceta;
-    }
-
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
-    public void setNotas(String notas) {
-        this.notas = notas;
+    public String getNotas() {
+        return notas;
     }
 
-    public void setEstadoBebida(EstadoBebida estadoBebida) {
-        this.estadoBebida = estadoBebida;
+    public void setNotas(String notas) {
+        this.notas = notas;
     }
 }

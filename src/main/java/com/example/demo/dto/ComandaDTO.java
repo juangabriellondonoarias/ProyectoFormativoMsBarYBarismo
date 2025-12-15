@@ -1,75 +1,61 @@
 package com.example.demo.dto;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import com.example.demo.models.EstadoComanda;
+import com.example.demo.models.PrioridadComanda;
 
 public class ComandaDTO {
-
-    private Integer idPedidoBarYBarismo;
-    private Integer idPedidoRestaurante;
+    
+    private Integer idComandaRestaurante;
     private Integer idMesa;
-    private LocalDateTime horaEntrada;
-    private String estado;
-    private String prioridad;
-    private List<DetalleComandaDTO> detalles;
+    
+    private EstadoComanda estado; 
+    private PrioridadComanda prioridad;
+    
+    private String notas;
 
-    // ===== GETTERS =====
-
-    public Integer getIdPedidoBarYBarismo() {
-        return idPedidoBarYBarismo;
+    /* Constructor */
+    public ComandaDTO() {
     }
 
-    public Integer getIdPedidoRestaurante() {
-        return idPedidoRestaurante;
+    /* Getters y Setters */
+    
+    public Integer getIdComandaRestaurante() {
+        return idComandaRestaurante;
+    }
+
+    public void setIdComandaRestaurante(Integer idComandaRestaurante) {
+        this.idComandaRestaurante = idComandaRestaurante;
     }
 
     public Integer getIdMesa() {
         return idMesa;
     }
 
-    public LocalDateTime getHoraEntrada() {
-        return horaEntrada;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public String getPrioridad() {
-        return prioridad;
-    }
-
-    public List<DetalleComandaDTO> getDetalles() {
-        return detalles;
-    }
-
-    // ===== SETTERS =====
-
-    public void setIdPedidoBarYBarismo(Integer idPedidoBarYBarismo) {
-        this.idPedidoBarYBarismo = idPedidoBarYBarismo;
-    }
-
-    public void setIdPedidoRestaurante(Integer idPedidoRestaurante) {
-        this.idPedidoRestaurante = idPedidoRestaurante;
-    }
-
     public void setIdMesa(Integer idMesa) {
         this.idMesa = idMesa;
     }
 
-    public void setHoraEntrada(LocalDateTime horaEntrada) {
-        this.horaEntrada = horaEntrada;
+    public EstadoComanda getEstado() {
+        return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoComanda estado) {
         this.estado = estado;
     }
 
-    public void setPrioridad(String prioridad) {
+    public PrioridadComanda getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(PrioridadComanda prioridad) {
         this.prioridad = prioridad;
     }
 
-    public void setDetalles(List<DetalleComandaDTO> detalles) {
-        this.detalles = detalles;
+    public String getNotas() {
+        return notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
     }
 }
