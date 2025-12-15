@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/menu")
-@Tag(name = "Menú", description = "Controlador para la gestión del menú")
+@Tag(name = "Menú", description = "Gestion de bebidas del menu")
 public class MenuController {
 
     private final MenuService service;

@@ -10,12 +10,44 @@ public class DetalleMenu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Integer cantidad;
+
+    private Double subtotal;
+
+    @ManyToOne
+    @JoinColumn(name = "menu_id", nullable = false)
+    private Menu menu;
+
+    @ManyToOne
+    @JoinColumn(name = "receta_id")
+    private Receta receta;
+
     private String imagen; // guardamos URL, no BLOB
 
     // RELACIÓN con MENU (muchos detalles → un menú)
     @ManyToOne
     @JoinColumn(name = "id_menu", nullable = false)
-    private Menu menu;
+    private Menu Menu;
+    
+    public void setId1(Long id) {
+        this.id = id;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(Double subtotal) {
+        this.subtotal = subtotal;
+    }
 
     // Temporal: relación hacia receta como ID
     @Column(name = "id_receta")
