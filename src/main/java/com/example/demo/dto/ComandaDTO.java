@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.models.EstadoComanda;
+//import com.example.demo.models.EstadoComanda;
 import com.example.demo.models.PrioridadComanda;
 
 public class ComandaDTO {
@@ -8,7 +8,7 @@ public class ComandaDTO {
     private Integer idComandaRestaurante;
     private Integer idMesa;
     
-    private EstadoComanda estado; 
+//    private EstadoComanda estado; 
     private PrioridadComanda prioridad;
     
     private String notas;
@@ -35,13 +35,13 @@ public class ComandaDTO {
         this.idMesa = idMesa;
     }
 
-    public EstadoComanda getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoComanda estado) {
-        this.estado = estado;
-    }
+//    public EstadoComanda getEstado() {
+//        return estado;
+//    }
+//
+//    public void setEstado(EstadoComanda estado) {
+//        this.estado = estado;
+//    }
 
     public PrioridadComanda getPrioridad() {
         return prioridad;
