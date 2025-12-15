@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "COMANDA_COCINA")
+@Table(name = "COMANDA_BAR_Y_BARISMO")
 public class Comanda {
 	
 	@Id
