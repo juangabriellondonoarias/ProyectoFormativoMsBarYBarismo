@@ -28,8 +28,28 @@ public class DetalleMenu {
     @ManyToOne
     @JoinColumn(name = "id_menu", nullable = false)
     private Menu Menu;
+    
+    public void setId1(Long id) {
+        this.id = id;
+    }
 
-    // Temporal: relación hacia receta como ID (tu compañero lo reemplaza)
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(Double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    // Temporal: relación hacia receta como ID
     @Column(name = "id_receta")
     private Long idReceta;
 
