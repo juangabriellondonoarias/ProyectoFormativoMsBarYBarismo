@@ -49,8 +49,10 @@ public class MenuService {
 
     // Eliminación lógica (RECOMENDADO)
     public void delete(Long id) {
-        Menu menu = findById(id);
-        menu.setActivo(false);
-        repository.save(menu);
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("Menu no encontrado con id: " + id);
+        }
+        repository.deleteById(id);
     }
+
 }
