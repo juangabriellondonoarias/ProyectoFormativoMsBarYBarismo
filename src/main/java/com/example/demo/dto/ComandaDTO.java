@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ComandaDTO {
 
-    private Integer idPedidoCocina;
+    private Integer idPedidoBarYBarismo;
     private Integer idPedidoRestaurante;
     private Integer idMesa;
     private LocalDateTime horaEntrada;
@@ -15,8 +15,8 @@ public class ComandaDTO {
 
     // ===== GETTERS =====
 
-    public Integer getIdPedidoCocina() {
-        return idPedidoCocina;
+    public Integer getIdPedidoBarYBarismo() {
+        return idPedidoBarYBarismo;
     }
 
     public Integer getIdPedidoRestaurante() {
@@ -45,8 +45,8 @@ public class ComandaDTO {
 
     // ===== SETTERS =====
 
-    public void setIdPedidoCocina(Integer idPedidoCocina) {
-        this.idPedidoCocina = idPedidoCocina;
+    public void setIdPedidoBarYBarismo(Integer idPedidoBarYBarismo) {
+        this.idPedidoBarYBarismo = idPedidoBarYBarismo;
     }
 
     public void setIdPedidoRestaurante(Integer idPedidoRestaurante) {

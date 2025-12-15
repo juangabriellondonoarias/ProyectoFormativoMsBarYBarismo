@@ -31,7 +31,7 @@ public class Comanda {
     @Enumerated(EnumType.STRING)
     private Prioridad prioridad = Prioridad.MEDIA;
 
-    @OneToMany(mappedBy = "pedidoCocina", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedidoBarYBarismo", cascade = CascadeType.ALL)
     private List<DetalleComanda> detalles;
 
     public enum EstadoPedido {

@@ -13,9 +13,8 @@ public class RecetaMapper {
 
         dto.setIdReceta(entity.getIdReceta());
         dto.setIdCategoria(entity.getIdCategoria());
-        dto.setIdModulo(entity.getIdModulo());
         dto.setNombreReceta(entity.getNombreReceta());
-        dto.setTiempoPreparacion(entity.getTiempoPreparacion());
+//        dto.setTiempoPreparacion(entity.getTiempoPreparacion());
         dto.setPorciones(entity.getPorciones());
         dto.setTemperatura(entity.getTemperatura());
         dto.setNotasAdicionales(entity.getNotasAdicionales());
@@ -33,9 +32,8 @@ public class RecetaMapper {
 
         entity.setIdReceta(dto.getIdReceta());
         entity.setIdCategoria(dto.getIdCategoria());
-        entity.setIdModulo(dto.getIdModulo());
         entity.setNombreReceta(dto.getNombreReceta());
-        entity.setTiempoPreparacion(dto.getTiempoPreparacion());
+//        entity.setTiempoPreparacion(dto.getTiempoPreparacion());
         entity.setPorciones(dto.getPorciones());
         entity.setTemperatura(dto.getTemperatura());
         entity.setNotasAdicionales(dto.getNotasAdicionales());

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pedidos-cocina/{idPedido}/detalles")
+@RequestMapping("/api/pedidos-bar-barismo/{idPedido}/detalles")
 @Tag(
     name = "Detalle de Comandas",
-    description = "Gestión de platos asociados a una comanda"
+    description = "Gestión de bebidas asociadas a una comanda"
 )
 public class DetalleComandaController {
 
@@ -26,7 +26,7 @@ public class DetalleComandaController {
         this.service = service;
     }
 
-    @Operation(summary = "Agregar un plato a una comanda")
+    @Operation(summary = "Agregar una bebida a una comanda")
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "Detalle creado correctamente"),
         @ApiResponse(responseCode = "404", description = "Comanda no encontrada")
@@ -40,7 +40,7 @@ public class DetalleComandaController {
         return ResponseEntity.ok(service.crear(idPedido, dto));
     }
 
-    @Operation(summary = "Listar los platos de una comanda")
+    @Operation(summary = "Listar las bebidas de una comanda")
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "Lista de detalles"),
         @ApiResponse(responseCode = "404", description = "Comanda no encontrada")
@@ -53,7 +53,7 @@ public class DetalleComandaController {
         return ResponseEntity.ok(service.listarPorPedido(idPedido));
     }
 
-    @Operation(summary = "Eliminar un plato de la comanda")
+    @Operation(summary = "Eliminar una bebida de la comanda")
     @ApiResponses({
         @ApiResponse(responseCode = "204", description = "Detalle eliminado"),
         @ApiResponse(responseCode = "404", description = "Detalle no encontrado")

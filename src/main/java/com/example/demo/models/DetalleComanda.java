@@ -25,10 +25,10 @@ public class DetalleComanda {
     private String notas;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "estado_plato")
-    private EstadoPlato estadoPlato = EstadoPlato.EN_ESPERA;
+    @Column(name = "estado_bebida")
+    private EstadoBebida estadoBebida = EstadoBebida.EN_ESPERA;
 
-    public enum EstadoPlato {
+    public enum EstadoBebida {
         EN_ESPERA, PREPARANDO, LISTO
     }
 
@@ -54,8 +54,8 @@ public class DetalleComanda {
         return notas;
     }
 
-    public EstadoPlato getEstadoPlato() {
-        return estadoPlato;
+    public EstadoBebida getEstadoBebida() {
+        return estadoBebida;
     }
 
     // ===== SETTERS =====
@@ -80,7 +80,7 @@ public class DetalleComanda {
         this.notas = notas;
     }
 
-    public void setEstadoPlato(EstadoPlato estadoPlato) {
-        this.estadoPlato = estadoPlato;
+    public void setEstadoBebida(EstadoBebida estadoBebida) {
+        this.estadoBebida = estadoBebida;
     }
 }

@@ -87,9 +87,8 @@ public class RecetaService {
         
         // Actualizar campos
         recetaExistente.setIdCategoria(recetaDTO.getIdCategoria());
-        recetaExistente.setIdModulo(recetaDTO.getIdModulo());
         recetaExistente.setNombreReceta(recetaDTO.getNombreReceta());
-        recetaExistente.setTiempoPreparacion(recetaDTO.getTiempoPreparacion());
+//        recetaExistente.setTiempoPreparacion(recetaDTO.getTiempoPreparacion());
         recetaExistente.setPorciones(recetaDTO.getPorciones());
         recetaExistente.setTemperatura(recetaDTO.getTemperatura());
         recetaExistente.setNotasAdicionales(recetaDTO.getNotasAdicionales());
@@ -121,17 +120,6 @@ public class RecetaService {
     }
     
     /**
-     * Buscar recetas por módulo
-     */
-    @Transactional(readOnly = true)
-    public List<RecetaDTO> buscarPorModulo(Integer idModulo) {
-        return recetaRepository.findByIdModulo(idModulo)
-                .stream()
-                .map(this::convertirADTO)
-                .collect(Collectors.toList());
-    }
-    
-    /**
      * Buscar recetas por nombre (parcial)
      */
     @Transactional(readOnly = true)
@@ -142,16 +130,16 @@ public class RecetaService {
                 .collect(Collectors.toList());
     }
     
-    /**
-     * Buscar recetas por tiempo de preparación máximo
-     */
-    @Transactional(readOnly = true)
-    public List<RecetaDTO> buscarPorTiempoMaximo(Integer tiempoMaximo) {
-        return recetaRepository.findByTiempoPreparacionLessThanEqual(tiempoMaximo)
-                .stream()
-                .map(this::convertirADTO)
-                .collect(Collectors.toList());
-    }
+//    /**
+//     * Buscar recetas por tiempo de preparación máximo
+//     */
+//    @Transactional(readOnly = true)
+//    public List<RecetaDTO> buscarPorTiempoMaximo(Integer tiempoMaximo) {
+//        return recetaRepository.findByTiempoPreparacionLessThanEqual(tiempoMaximo)
+//                .stream()
+//                .map(this::convertirADTO)
+//                .collect(Collectors.toList());
+//    }
     
     // ========== MÉTODOS DE CONVERSIÓN ==========
     
@@ -162,9 +150,8 @@ public class RecetaService {
         RecetaDTO dto = new RecetaDTO();
         dto.setIdReceta(receta.getIdReceta());
         dto.setIdCategoria(receta.getIdCategoria());
-        dto.setIdModulo(receta.getIdModulo());
         dto.setNombreReceta(receta.getNombreReceta());
-        dto.setTiempoPreparacion(receta.getTiempoPreparacion());
+//        dto.setTiempoPreparacion(receta.getTiempoPreparacion());
         dto.setPorciones(receta.getPorciones());
         dto.setTemperatura(receta.getTemperatura());
         dto.setNotasAdicionales(receta.getNotasAdicionales());
@@ -201,9 +188,8 @@ public class RecetaService {
     private Receta convertirAEntidad(RecetaDTO dto) {
         Receta receta = new Receta();
         receta.setIdCategoria(dto.getIdCategoria());
-        receta.setIdModulo(dto.getIdModulo());
         receta.setNombreReceta(dto.getNombreReceta());
-        receta.setTiempoPreparacion(dto.getTiempoPreparacion());
+//        receta.setTiempoPreparacion(dto.getTiempoPreparacion());
         receta.setPorciones(dto.getPorciones() != null ? dto.getPorciones() : 1);
         receta.setTemperatura(dto.getTemperatura());
         receta.setNotasAdicionales(dto.getNotasAdicionales());

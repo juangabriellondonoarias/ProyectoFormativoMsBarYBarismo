@@ -18,12 +18,6 @@ public interface RecetaRepository extends JpaRepository<Receta, Integer> {
     // Buscar por categoría
     List<Receta> findByIdCategoria(Integer idCategoria);
     
-    // Buscar por módulo
-    List<Receta> findByIdModulo(Integer idModulo);
-    
-    // Buscar por categoría y módulo
-    List<Receta> findByIdCategoriaAndIdModulo(Integer idCategoria, Integer idModulo);
-    
     // Buscar por nombre (búsqueda parcial)
     @Query("SELECT r FROM Receta r WHERE LOWER(r.nombreReceta) LIKE LOWER(CONCAT('%', :nombre, '%'))")
     List<Receta> buscarPorNombreParcial(@Param("nombre") String nombre);

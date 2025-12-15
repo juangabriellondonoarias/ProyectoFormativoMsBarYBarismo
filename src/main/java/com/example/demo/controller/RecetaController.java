@@ -166,25 +166,6 @@ public class RecetaController {
     }
 
     // -------------------------------------------------------------------------
-    @Operation(summary = "Buscar recetas por módulo",
-               description = "Retorna las recetas asociadas a un módulo específico.")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Búsqueda exitosa")
-    })
-    @GetMapping("/buscar/modulo/{idModulo}")
-    public ResponseEntity<Map<String, Object>> buscarPorModulo(@PathVariable Integer idModulo) {
-        List<RecetaDTO> recetas = recetaService.buscarPorModulo(idModulo);
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("success", true);
-        response.put("message", "Recetas encontradas por módulo");
-        response.put("data", recetas);
-        response.put("total", recetas.size());
-
-        return ResponseEntity.ok(response);
-    }
-
-    // -------------------------------------------------------------------------
     @Operation(summary = "Buscar recetas por nombre",
                description = "Permite búsqueda parcial por nombre de receta.")
     @ApiResponses({
@@ -203,22 +184,24 @@ public class RecetaController {
         return ResponseEntity.ok(response);
     }
 
-    // -------------------------------------------------------------------------
-    @Operation(summary = "Buscar recetas por tiempo máximo",
-               description = "Devuelve recetas cuyo tiempo de preparación es igual o menor al valor indicado.")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Búsqueda exitosa")
-    })
-    @GetMapping("/buscar/tiempo")
-    public ResponseEntity<Map<String, Object>> buscarPorTiempo(@RequestParam Integer max) {
-        List<RecetaDTO> recetas = recetaService.buscarPorTiempoMaximo(max);
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("success", true);
-        response.put("message", "Recetas con tiempo máximo de " + max + " minutos obtenidas");
-        response.put("data", recetas);
-        response.put("total", recetas.size());
-
-        return ResponseEntity.ok(response);
-    }
+//    // -------------------------------------------------------------------------
+    
+//		COMENTADA ESTA SECCION, NO LO VEO NECESARIO POR AHORA
+//    @Operation(summary = "Buscar recetas por tiempo máximo",
+//               description = "Devuelve recetas cuyo tiempo de preparación es igual o menor al valor indicado.")
+//    @ApiResponses({
+//        @ApiResponse(responseCode = "200", description = "Búsqueda exitosa")
+//    })
+//    @GetMapping("/buscar/tiempo")
+//    public ResponseEntity<Map<String, Object>> buscarPorTiempo(@RequestParam Integer max) {
+//        List<RecetaDTO> recetas = recetaService.buscarPorTiempoMaximo(max);
+//
+//        Map<String, Object> response = new HashMap<>();
+//        response.put("success", true);
+//        response.put("message", "Recetas con tiempo máximo de " + max + " minutos obtenidas");
+//        response.put("data", recetas);
+//        response.put("total", recetas.size());
+//
+//        return ResponseEntity.ok(response);
+//    }
 }

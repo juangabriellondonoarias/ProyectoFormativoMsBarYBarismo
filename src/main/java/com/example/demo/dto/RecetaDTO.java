@@ -16,15 +16,9 @@ public class RecetaDTO {
     @NotNull(message = "La categoría es obligatoria")
     private Integer idCategoria;
     
-    @NotNull(message = "El módulo es obligatorio")
-    private Integer idModulo;
-    
     @NotBlank(message = "El nombre de la receta es obligatorio")
     @Size(max = 150, message = "El nombre no puede exceder 150 caracteres")
     private String nombreReceta;
-    
-    @Min(value = 1, message = "El tiempo de preparación debe ser mayor a 0")
-    private Integer tiempoPreparacion;
     
     @Min(value = 1, message = "Las porciones deben ser al menos 1")
     private Integer porciones;
@@ -58,14 +52,6 @@ public class RecetaDTO {
         this.idCategoria = idCategoria;
     }
 
-    public Integer getIdModulo() {
-        return idModulo;
-    }
-
-    public void setIdModulo(Integer idModulo) {
-        this.idModulo = idModulo;
-    }
-
     public String getNombreReceta() {
         return nombreReceta;
     }
@@ -74,13 +60,14 @@ public class RecetaDTO {
         this.nombreReceta = nombreReceta;
     }
 
-    public Integer getTiempoPreparacion() {
-        return tiempoPreparacion;
-    }
-
-    public void setTiempoPreparacion(Integer tiempoPreparacion) {
-        this.tiempoPreparacion = tiempoPreparacion;
-    }
+//		ESTAS 2 COMENTADAS, TENGO DUDA SI EL setTiempoPreparacion ES NECESARIO
+//    public Integer getTiempoPreparacion() {
+//        return tiempoPreparacion;
+//    }
+//
+//    public void setTiempoPreparacion(Integer tiempoPreparacion) {
+//        this.tiempoPreparacion = tiempoPreparacion;
+//    }
 
     public Integer getPorciones() {
         return porciones;
@@ -112,14 +99,6 @@ public class RecetaDTO {
 
     public void setNombreCategoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
-    }
-
-    public String getNombreModulo() {
-        return nombreModulo;
-    }
-
-    public void setNombreModulo(String nombreModulo) {
-        this.nombreModulo = nombreModulo;
     }
 
     public List<RecetaIngredienteDTO> getIngredientes() {

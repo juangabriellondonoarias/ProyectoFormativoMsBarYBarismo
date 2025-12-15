@@ -104,32 +104,6 @@ public class PasoPreparacionController {
     }
 
     // ------------------------------------------------------------
-    @Operation(summary = "Crear el siguiente paso automático", description = "Crea un paso incrementando el orden al final de la receta.")
-    @PostMapping("/receta/{idReceta}/siguiente")
-    public ResponseEntity<Map<String, Object>> crearSiguientePaso(
-            @Parameter(description = "ID de la receta", required = true)
-            @PathVariable Integer idReceta,
-            @RequestBody Map<String, String> payload) {
-
-        String descripcion = payload.get("descripcion");
-        if (descripcion == null || descripcion.trim().isEmpty()) {
-            Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("success", false);
-            errorResponse.put("message", "La descripción es obligatoria");
-            return ResponseEntity.badRequest().body(errorResponse);
-        }
-
-        PasoPreparacionDTO pasoCreado = pasoService.crearSiguientePaso(idReceta, descripcion);
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("success", true);
-        response.put("message", "Paso agregado al final de la receta");
-        response.put("data", pasoCreado);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
-    // ------------------------------------------------------------
     @Operation(summary = "Actualizar un paso completo")
     @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> actualizar(
@@ -147,31 +121,6 @@ public class PasoPreparacionController {
         return ResponseEntity.ok(response);
     }
 
-    // ------------------------------------------------------------
-    @Operation(summary = "Actualizar solo la descripción de un paso")
-    @PatchMapping("/{id}/descripcion")
-    public ResponseEntity<Map<String, Object>> actualizarDescripcion(
-            @Parameter(description = "ID del paso", required = true)
-            @PathVariable Integer id,
-            @RequestBody Map<String, String> payload) {
-
-        String nuevaDescripcion = payload.get("descripcion");
-        if (nuevaDescripcion == null || nuevaDescripcion.trim().isEmpty()) {
-            Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("success", false);
-            errorResponse.put("message", "La descripción es obligatoria");
-            return ResponseEntity.badRequest().body(errorResponse);
-        }
-
-        PasoPreparacionDTO pasoActualizado = pasoService.actualizarDescripcion(id, nuevaDescripcion);
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("success", true);
-        response.put("message", "Descripción actualizada exitosamente");
-        response.put("data", pasoActualizado);
-
-        return ResponseEntity.ok(response);
-    }
 
     // ------------------------------------------------------------
     @Operation(summary = "Eliminar un paso")
@@ -244,26 +193,6 @@ public class PasoPreparacionController {
         response.put("success", true);
         response.put("message", "Cantidad de pasos obtenida");
         response.put("cantidad", cantidad);
-
-        return ResponseEntity.ok(response);
-    }
-
-    // ------------------------------------------------------------
-    @Operation(summary = "Buscar pasos por texto")
-    @GetMapping("/receta/{idReceta}/buscar")
-    public ResponseEntity<Map<String, Object>> buscarPorTexto(
-            @Parameter(description = "ID de la receta", required = true)
-            @PathVariable Integer idReceta,
-            @Parameter(description = "Texto a buscar", required = true)
-            @RequestParam String q) {
-
-        List<PasoPreparacionDTO> pasos = pasoService.buscarPorTexto(idReceta, q);
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("success", true);
-        response.put("message", "Búsqueda completada");
-        response.put("data", pasos);
-        response.put("total", pasos.size());
 
         return ResponseEntity.ok(response);
     }

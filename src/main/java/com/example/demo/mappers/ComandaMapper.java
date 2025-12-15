@@ -19,7 +19,7 @@ public class ComandaMapper {
     public ComandaDTO toDTO(Comanda comanda) {
         ComandaDTO dto = new ComandaDTO();
 
-        dto.setIdPedidoCocina(comanda.getIdComanda());
+        dto.setIdPedidoBarYBarismo(comanda.getIdComanda());
         dto.setIdPedidoRestaurante(comanda.getIdPedidoRestaurante());
         dto.setIdMesa(comanda.getIdMesa());
         dto.setHoraEntrada(comanda.getHoraEntrada());

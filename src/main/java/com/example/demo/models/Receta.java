@@ -21,9 +21,6 @@ public class Receta {
     @Column(name = "id_categoria", nullable = false)
     private Integer idCategoria;
     
-    @Column(name = "id_modulo", nullable = false)
-    private Integer idModulo;
-    
     @Column(name = "nombre_receta", nullable = false, unique = true, length = 150)
     private String nombreReceta;
     
@@ -64,14 +61,6 @@ public class Receta {
 
     public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
-    }
-
-    public Integer getIdModulo() {
-        return idModulo;
-    }
-
-    public void setIdModulo(Integer idModulo) {
-        this.idModulo = idModulo;
     }
 
     public String getNombreReceta() {
@@ -137,7 +126,4 @@ public class Receta {
     public void setPasos(List<PasoPreparacion> pasos) {
         this.pasos = pasos;
     }
-
-	
-
 }

@@ -84,30 +84,6 @@ public class PasoPreparacionService {
 	}
 
 	/**
-	 * Crear el siguiente paso automáticamente (al final de la lista)
-	 */
-	@Transactional
-	public PasoPreparacionDTO crearSiguientePaso(Integer idReceta, String descripcion) {
-		// Validar que la receta exista
-		if (!recetaRepository.existsById(idReceta)) {
-			throw new ResourceNotFoundException("Receta no encontrada con ID: " + idReceta);
-		}
-
-		// Obtener el orden máximo y sumar 1
-		Integer ordenMaximo = pasoRepository.obtenerOrdenMaximo(idReceta);
-		Integer nuevoOrden = (ordenMaximo != null) ? ordenMaximo + 1 : 1;
-
-		PasoPreparacionDTO pasoDTO = new PasoPreparacionDTO();
-		pasoDTO.setIdReceta(idReceta);
-		pasoDTO.setOrden(nuevoOrden);
-		pasoDTO.setDescripcionPaso(descripcion);
-
-		PasoPreparacion paso = convertirAEntidad(pasoDTO);
-		PasoPreparacion pasoGuardado = pasoRepository.save(paso);
-		return convertirADTO(pasoGuardado);
-	}
-
-	/**
 	 * Actualizar un paso existente
 	 */
 	@Transactional
@@ -136,19 +112,6 @@ public class PasoPreparacionService {
 		pasoExistente.setDescripcionPaso(pasoDTO.getDescripcionPaso());
 
 		PasoPreparacion pasoActualizado = pasoRepository.save(pasoExistente);
-		return convertirADTO(pasoActualizado);
-	}
-
-	/**
-	 * Actualizar solo la descripción de un paso
-	 */
-	@Transactional
-	public PasoPreparacionDTO actualizarDescripcion(Integer id, String nuevaDescripcion) {
-		PasoPreparacion paso = pasoRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Paso de preparación no encontrado con ID: " + id));
-
-		paso.setDescripcionPaso(nuevaDescripcion);
-		PasoPreparacion pasoActualizado = pasoRepository.save(paso);
 		return convertirADTO(pasoActualizado);
 	}
 
@@ -216,15 +179,6 @@ public class PasoPreparacionService {
 	@Transactional(readOnly = true)
 	public Long contarPasos(Integer idReceta) {
 		return pasoRepository.contarPasosPorReceta(idReceta);
-	}
-
-	/**
-	 * Buscar pasos por texto en descripción
-	 */
-	@Transactional(readOnly = true)
-	public List<PasoPreparacionDTO> buscarPorTexto(Integer idReceta, String texto) {
-		return pasoRepository.buscarPorTextoEnDescripcion(idReceta, texto).stream().map(this::convertirADTO)
-				.collect(Collectors.toList());
 	}
 
 	// ========== MÉTODOS DE CONVERSIÓN ==========

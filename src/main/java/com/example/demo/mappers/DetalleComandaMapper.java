@@ -9,11 +9,11 @@ public class DetalleComandaMapper {
 
     public DetalleComandaDTO toDTO(DetalleComanda entity) {
         DetalleComandaDTO dto = new DetalleComandaDTO();
-        dto.setIdDetalleCocina(entity.getIdDetalleComanda());
+        dto.setIdDetalleBarYBarismo(entity.getIdDetalleComanda());
         dto.setIdReceta(entity.getIdReceta());
         dto.setCantidad(entity.getCantidad());
         dto.setNotas(entity.getNotas());
-        dto.setEstadoPlato(entity.getEstadoPlato().name());
+        dto.setEstadoBebida(entity.getEstadoBebida().name());
         return dto;
     }
 
@@ -22,7 +22,7 @@ public class DetalleComandaMapper {
         entity.setIdReceta(dto.getIdReceta());
         entity.setCantidad(dto.getCantidad());
         entity.setNotas(dto.getNotas());
-        entity.setEstadoPlato(DetalleComanda.EstadoPlato.valueOf(dto.getEstadoPlato()));
+        entity.setEstadoBebida(DetalleComanda.EstadoBebida.valueOf(dto.getEstadoBebida()));
         return entity;
     }
 }

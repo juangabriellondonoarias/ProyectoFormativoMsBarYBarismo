@@ -2,16 +2,16 @@ package com.example.demo.dto;
 
 public class DetalleComandaDTO {
 
-    private Integer idDetalleCocina;
+    private Integer idDetalleBarYBarismo;
     private Integer idReceta;
     private Integer cantidad;
     private String notas;
-    private String estadoPlato;
+    private String estadoBebida;
 
     // ===== GETTERS =====
 
-    public Integer getIdDetalleCocina() {
-        return idDetalleCocina;
+    public Integer getIdDetalleBarYBarismo() {
+        return idDetalleBarYBarismo;
     }
 
     public Integer getIdReceta() {
@@ -26,14 +26,14 @@ public class DetalleComandaDTO {
         return notas;
     }
 
-    public String getEstadoPlato() {
-        return estadoPlato;
+    public String getEstadoBebida() {
+        return estadoBebida;
     }
 
     // ===== SETTERS =====
 
-    public void setIdDetalleCocina(Integer idDetalleCocina) {
-        this.idDetalleCocina = idDetalleCocina;
+    public void setIdDetalleBarYBarismo(Integer idDetalleBarYBarismo) {
+        this.idDetalleBarYBarismo = idDetalleBarYBarismo;
     }
 
     public void setIdReceta(Integer idReceta) {
@@ -48,7 +48,7 @@ public class DetalleComandaDTO {
         this.notas = notas;
     }
 
-    public void setEstadoPlato(String estadoPlato) {
-        this.estadoPlato = estadoPlato;
+    public void setEstadoBebida(String estadoBebida) {
+        this.estadoBebida = estadoBebida;
     }
 }

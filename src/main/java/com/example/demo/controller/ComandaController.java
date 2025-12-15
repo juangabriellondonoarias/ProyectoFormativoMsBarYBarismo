@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pedidos-cocina")
+@RequestMapping("/api/pedidos-bar-barismo")
 @Tag(
     name = "Comandas",
     description = "Gestión de comandas del módulo Bar y Barismo"
