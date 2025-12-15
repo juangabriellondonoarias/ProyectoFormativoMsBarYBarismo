@@ -32,10 +32,10 @@ public class Comanda {
 	@Column(name = "hora_entrada" , nullable = false , updatable = false)
 	private LocalDateTime horaEntrada;
 	
-	/* Mapeo del ENUM ESTADO */
-    @Enumerated(EnumType.STRING)
-    @Column(name = "estado", nullable = false)
-    private EstadoComanda estado = EstadoComanda.EN_ESPERA; 
+//	/* Mapeo del ENUM ESTADO */
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "estado", nullable = false)
+//    private EstadoComanda estado = EstadoComanda.EN_ESPERA; 
 	
     /* Mapeo del enum prioridad */
 	@Enumerated(EnumType.STRING)
@@ -68,9 +68,9 @@ public class Comanda {
 		return horaEntrada;
 	}
 	
-	public EstadoComanda getEstado () {
-		return estado;
-	}
+//	public EstadoComanda getEstado () {
+//		return estado;
+//	}
 	
 	public PrioridadComanda getPrioridad () {
 		return prioridad;
@@ -96,9 +96,9 @@ public class Comanda {
 		this.horaEntrada = horaEntrada;
 	}
 	
-	public void setEstado( EstadoComanda estado) {
-		this.estado = estado;
-	}
+//	public void setEstado( EstadoComanda estado) {
+//		this.estado = estado;
+//	}
 	
 	public void setPrioridad(PrioridadComanda prioridad) {
 		this.prioridad = prioridad;

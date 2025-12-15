@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.Comanda;
-import com.example.demo.models.EstadoComanda;
+//import com.example.demo.models.EstadoComanda;
 import com.example.demo.service.ComandaService;
 
 /*import de swagger*/
@@ -71,32 +71,32 @@ public ResponseEntity<Void>eliminarComanda(@PathVariable Integer id){
 }
 
 
-/*actualizar*/
-@Operation(summary = "Actualiza el estado  ", description = "Actualiza el estado")
-@RequestMapping(value = "/{id}/estado", method = RequestMethod.PATCH) 
-public ResponseEntity<Comanda> actualizarEstado(@PathVariable Integer id, @RequestBody Map<String, String> body) {
-    try {
-        // Asumimos que el JSON viene como {"estado": "LISTO"}
-        String nuevoEstadoString = body.get("estado"); 
-        
-        // ... (El resto de tu lógica es correcta) ...
-        
-        if (nuevoEstadoString == null) {
-            return ResponseEntity.badRequest().body(null); 
-        }
-        
-        EstadoComanda nuevoEstado = EstadoComanda.valueOf(nuevoEstadoString.toUpperCase());
-        Comanda comandaActualizada = comandaService.actualizarEstado(id, nuevoEstado);
-
-        if (comandaActualizada != null) {
-            return ResponseEntity.ok(comandaActualizada);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    } catch (IllegalArgumentException e) {
-        return ResponseEntity.badRequest().body(null); 
-    }
-}
+///*actualizar*/
+//@Operation(summary = "Actualiza el estado  ", description = "Actualiza el estado")
+//@RequestMapping(value = "/{id}/estado", method = RequestMethod.PATCH) 
+//public ResponseEntity<Comanda> actualizarEstado(@PathVariable Integer id, @RequestBody Map<String, String> body) {
+//    try {
+//        // Asumimos que el JSON viene como {"estado": "LISTO"}
+//        String nuevoEstadoString = body.get("estado"); 
+//        
+//        // ... (El resto de tu lógica es correcta) ...
+//        
+//        if (nuevoEstadoString == null) {
+//            return ResponseEntity.badRequest().body(null); 
+//        }
+//        
+//        EstadoComanda nuevoEstado = EstadoComanda.valueOf(nuevoEstadoString.toUpperCase());
+//        Comanda comandaActualizada = comandaService.actualizarEstado(id, nuevoEstado);
+//
+//        if (comandaActualizada != null) {
+//            return ResponseEntity.ok(comandaActualizada);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    } catch (IllegalArgumentException e) {
+//        return ResponseEntity.badRequest().body(null); 
+//    }
+//}
 
 
 @Operation(summary = "Actualización parcial de Notas ", description = "Actualiza solo las 'notas' ")

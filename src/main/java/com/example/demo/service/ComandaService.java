@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.plaf.basic.BasicComboBoxUI.ListDataHandler;
 
 import com.example.demo.models.Comanda;
-import com.example.demo.models.EstadoComanda;
+//import com.example.demo.models.EstadoComanda;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,21 +49,21 @@ public class ComandaService {
 		comandaRepository.deleteById(id);
 	}
 	
-	@Transactional
-    public Comanda actualizarEstado(Integer id, EstadoComanda nuevoEstado) {
-        // 1. Buscar la comanda existente por ID
-        Comanda comandaExistente = comandaRepository.findById(id).orElse(null);
-        
-        if (comandaExistente != null) {
-            // 2. Modificar solo el campo de estado
-            comandaExistente.setEstado(nuevoEstado);
-            
-            // 3. Guardar el objeto actualizado (Hibernate sabe que solo el campo 'estado' cambió)
-            return comandaRepository.save(comandaExistente);
-        }
-        // Si no se encuentra, devuelve null
-        return null;
-    }
+//	@Transactional
+//    public Comanda actualizarEstado(Integer id, EstadoComanda nuevoEstado) {
+//        // 1. Buscar la comanda existente por ID
+//        Comanda comandaExistente = comandaRepository.findById(id).orElse(null);
+//        
+//        if (comandaExistente != null) {
+//            // 2. Modificar solo el campo de estado
+//            comandaExistente.setEstado(nuevoEstado);
+//            
+//            // 3. Guardar el objeto actualizado (Hibernate sabe que solo el campo 'estado' cambió)
+//            return comandaRepository.save(comandaExistente);
+//        }
+//        // Si no se encuentra, devuelve null
+//        return null;
+//    }
 	
 	@Transactional
 	public Comanda actualizarNotas(Integer id, String notas) {
