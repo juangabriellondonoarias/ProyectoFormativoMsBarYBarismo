@@ -1,25 +1,31 @@
 package com.example.demo.mappers;
-
 import com.example.demo.dto.CategoriaRecetaDTO;
 import com.example.demo.models.CategoriaReceta;
-import org.springframework.stereotype.Component;
 
-@Component
 public class CategoriaRecetaMapper {
-
-    // ===== ENTITY -> DTO =====
-    public CategoriaRecetaDTO toDTO(CategoriaReceta entity) {
+	// Convierte de Entidad (Base de Datos) a DTO (Para el Cliente)
+    public static CategoriaRecetaDTO toDTO(CategoriaReceta categoria) {
+        if (categoria == null) {
+            return null;
+        }
+        
         CategoriaRecetaDTO dto = new CategoriaRecetaDTO();
-        dto.setIdCategoria(entity.getIdCategoria());
-        dto.setNombreCategoria(entity.getNombreCategoria());
+        dto.setIdCategoria(categoria.getIdCategoria());
+        dto.setNombreCategoria(categoria.getNombreCategoria());
+        
         return dto;
     }
 
-    // ===== DTO -> ENTITY =====
-    public CategoriaReceta toEntity(CategoriaRecetaDTO dto) {
-        CategoriaReceta entity = new CategoriaReceta();
-        entity.setIdCategoria(dto.getIdCategoria());
-        entity.setNombreCategoria(dto.getNombreCategoria());
-        return entity;
+    // Convierte de DTO (Desde el Cliente) a Entidad (Para Base de Datos)
+    public static CategoriaReceta toEntity(CategoriaRecetaDTO dto) {
+        if (dto == null) {
+            return null;
+        }
+        
+        CategoriaReceta categoria = new CategoriaReceta();
+        categoria.setIdCategoria(dto.getIdCategoria());
+        categoria.setNombreCategoria(dto.getNombreCategoria());
+        
+        return categoria;
     }
 }

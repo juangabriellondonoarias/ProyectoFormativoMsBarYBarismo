@@ -2,6 +2,7 @@ package com.example.demo.service;
 import com.example.demo.dto.CategoriaRecetaDTO;
 import com.example.demo.models.CategoriaReceta;
 import com.example.demo.repository.CategoriaRecetaRepository;
+import com.example.demo.service.CategoriaRecetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,71 +11,61 @@ import java.util.stream.Collectors;
 
 @Service
 public class CategoriaRecetaService {
-
+	
 	@Autowired
-    private CategoriaRecetaRepository repository;
+	private CategoriaRecetaRepository repositorio;
+	
+	private CategoriaRecetaDTO mapearADTO(CategoriaReceta categoria) {
+	    CategoriaRecetaDTO dto = new CategoriaRecetaDTO();
+	    dto.setIdCategoria(categoria.getIdCategoria());
+	    dto.setNombreCategoria(categoria.getNombreCategoria());
+	    return dto;
+	}
 
-    // 1. LISTAR TODAS
-    public List<CategoriaRecetaDTO> obtenerTodas() {
-        return repository.findAll().stream()
-                .map(this::convertirADTO)
+	private CategoriaReceta mapearAEntidad(CategoriaRecetaDTO dto) {
+	    CategoriaReceta categoria = new CategoriaReceta();
+	    // No seteo el ID porque es autoincremental al guardar
+	    categoria.setNombreCategoria(dto.getNombreCategoria());
+	    return categoria;
+	}
+
+    @Override
+    public List<CategoriaRecetaDTO> listarTodas() {
+        return repositorio.findAll().stream()
+                .map(this::mapearADTO)
                 .collect(Collectors.toList());
     }
 
-    // 2. OBTENER POR ID
+    @Override
     public CategoriaRecetaDTO obtenerPorId(Integer id) {
-        CategoriaReceta categoria = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoría no encontrada con ID: " + id));
-        return convertirADTO(categoria);
+        CategoriaReceta categoria = repositorio.findById(id)
+                .orElseThrow(() -> new RuntimeException("Categoría de receta no encontrada con ID: " + id));
+        return mapearADTO(categoria);
     }
 
-    // 3. CREAR
-    public CategoriaRecetaDTO crear(CategoriaRecetaDTO dto) {
-        if (repository.existsByNombreCategoria(dto.getNombreCategoria())) {
-            throw new RuntimeException("Ya existe una categoría con el nombre: " + dto.getNombreCategoria());
-        }
-        CategoriaReceta entidad = convertirAEntidad(dto);
-        CategoriaReceta guardado = repository.save(entidad);
-        return convertirADTO(guardado);
+    @Override
+    public CategoriaRecetaDTO guardar(CategoriaRecetaDTO categoriaDTO) {
+        CategoriaReceta categoria = mapearAEntidad(categoriaDTO);
+        CategoriaReceta nuevaCategoria = repositorio.save(categoria);
+        return mapearADTO(nuevaCategoria);
     }
 
-    // 4. ACTUALIZAR
-    public CategoriaRecetaDTO actualizar(Integer id, CategoriaRecetaDTO dto) {
-        CategoriaReceta existente = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
-
-        // Validar si cambio el nombre, que no choque con otra existente
-        if (!existente.getNombreCategoria().equals(dto.getNombreCategoria()) 
-            && repository.existsByNombreCategoria(dto.getNombreCategoria())) {
-            throw new RuntimeException("Ya existe otra categoría con ese nombre");
-        }
-
-        existente.setNombreCategoria(dto.getNombreCategoria());
+    @Override
+    public CategoriaRecetaDTO actualizar(Integer id, CategoriaRecetaDTO categoriaDTO) {
+        CategoriaReceta categoriaExistente = repositorio.findById(id)
+                .orElseThrow(() -> new RuntimeException("Categoría de receta no encontrada con ID: " + id));
         
-        CategoriaReceta actualizado = repository.save(existente);
-        return convertirADTO(actualizado);
+        categoriaExistente.setNombreCategoria(categoriaDTO.getNombreCategoria());
+        
+        CategoriaReceta actualizada = repositorio.save(categoriaExistente);
+        return mapearADTO(actualizada);
     }
 
-    // 5. ELIMINAR
+    @Override
     public void eliminar(Integer id) {
-        if (!repository.existsById(id)) {
-            throw new RuntimeException("No se puede eliminar, ID no existe");
+        if (!repositorio.existsById(id)) {
+            throw new RuntimeException("Categoría de receta no encontrada con ID: " + id);
         }
-        repository.deleteById(id);
+        repositorio.deleteById(id);
     }
-
-    // --- MÉTODOS AUXILIARES (Mappers) ---
-    private CategoriaRecetaDTO convertirADTO(CategoriaReceta entidad) {
-        CategoriaRecetaDTO dto = new CategoriaRecetaDTO();
-        dto.setIdCategoria(entidad.getIdCategoria());
-        dto.setNombreCategoria(entidad.getNombreCategoria());
-        return dto;
-    }
-
-    private CategoriaReceta convertirAEntidad(CategoriaRecetaDTO dto) {
-        CategoriaReceta entidad = new CategoriaReceta();
-        entidad.setNombreCategoria(dto.getNombreCategoria());
-        return entidad;
-    }
-	
 }
