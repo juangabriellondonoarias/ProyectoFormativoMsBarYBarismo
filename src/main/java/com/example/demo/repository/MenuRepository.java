@@ -6,4 +6,4 @@ import com.example.demo.models.Menu;
 
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
-}
+}	
