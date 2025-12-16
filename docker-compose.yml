@@ -1,0 +1,31 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-msbar-y-barismo
+    restart: always
+    environment:
+      MYSQL_DATABASE: msbarbarismo
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: mateo
+      MYSQL_PASSWORD: "MaTe21.,?"
+    ports:
+      - "3310:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    image: proyectoformativomsbarybarismo-app
+    container_name: ms-bar-y-barismo
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/msbarbarismo
+      SPRING_DATASOURCE_USERNAME: mateo
+      SPRING_DATASOURCE_PASSWORD: "MaTe21.,?"
+
+volumes:
+  mysql_data:
